@@ -1,14 +1,17 @@
 package com.example.tezrosolutions.testapp;
 
-import android.support.v7.app.ActionBarActivity;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
-//import android.util.Log;
-import android.widget.RelativeLayout;
 import android.widget.Button;
-import android.graphics.Color;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
+
+//import android.util.Log;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -41,6 +44,15 @@ public class MainActivity extends ActionBarActivity {
         obuttonDetails.addRule(RelativeLayout.CENTER_HORIZONTAL);
         obuttonDetails.addRule(RelativeLayout.CENTER_VERTICAL);
 
+        //set dip to pixels to stay consistent on every device
+        Resources r = getResources();
+        int pixels = (int) (TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200,
+                r.getDisplayMetrics()
+        ));
+
+
+        ousername.setWidth(pixels);
+
         RelativeLayout.LayoutParams ousernameDetails= new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.WRAP_CONTENT,
                 RelativeLayout.LayoutParams.WRAP_CONTENT
@@ -50,7 +62,7 @@ public class MainActivity extends ActionBarActivity {
         ousernameDetails.addRule(orelativeLayout.ABOVE,oblueButton.getId());
         ousernameDetails.addRule(orelativeLayout.CENTER_HORIZONTAL);
         ousernameDetails.setMargins(0,0,0,50);
- //todo: fix the user text width  left on tutorial 16
+        //todo: fix the user text width  left on tutorial 16
         //adding to the layout
         orelativeLayout.addView(ousername, ousernameDetails);
         orelativeLayout.addView(oblueButton,obuttonDetails);
